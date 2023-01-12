@@ -1,15 +1,13 @@
 package com.timetracker.timetracking.controllers;
 
-import com.timetracker.timetracking.models.Employee;
+import com.timetracker.timetracking.dto.TimeSheetResponse;
 import com.timetracker.timetracking.models.TimeSheet;
-import com.timetracker.timetracking.models.TimeSheetResponse;
 import com.timetracker.timetracking.repository.TimeSheetRepository;
 import com.timetracker.timetracking.services.TimeSheetService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Time;
 import java.util.List;
 @Slf4j
 @RestController
@@ -42,7 +40,7 @@ public class TimeSheetController {
     }
 
     @GetMapping("ts/emp/{empId}")
-    public List<TimeSheet> getTimeSheetEntries(@PathVariable Long empId) {
+    public List<TimeSheetResponse> getTimeSheetEntries(@PathVariable Long empId) {
         return timeSheetService.getTimeSheetEntriesByEmpId(empId);
     }
 
